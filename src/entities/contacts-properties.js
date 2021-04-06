@@ -12,7 +12,7 @@ const getAllContactsProperties = async() => {
     requiresAuthentication(_baseOptions);
     const mergedProps = Object.assign({}, defaults, _baseOptions);
     const contactsProperties = await createRequest(
-      constants.api.contactsProperties.getAllContactsProperties,
+      constants(_baseOptions.url).api.contactsProperties.getAllContactsProperties,
       {},
       mergedProps
     );

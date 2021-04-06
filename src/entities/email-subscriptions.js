@@ -13,7 +13,7 @@ const updateEmailSubscription = async (email, body = {}) => {
 
     const mergedProps = { ...defaults, ..._baseOptions };
     const updateStatus = await createRequest(
-      constants.api.emailSubscriptions.updateStatus,
+      constants(_baseOptions.url).api.emailSubscriptions.updateStatus,
       { body, method: 'PUT', email },
       mergedProps
     );
@@ -33,7 +33,7 @@ const getEmailSubscriptionStatus = async (email, portalId) => {
 
     const mergedProps = { ...defaults, ..._baseOptions };
     const status = await createRequest(
-      constants.api.emailSubscriptions.getStatus,
+      constants(_baseOptions.url).api.emailSubscriptions.getStatus,
       { email, portalId },
       mergedProps
     );

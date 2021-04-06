@@ -14,7 +14,7 @@ const getById = async (vid, options = {}) => {
     requiresAuthentication(_baseOptions);
     const mergedProps = { ...defaults, ..._baseOptions, ...options };
     const contact = await createRequest(
-      constants.api.contacts.byId,
+      constants(_baseOptions.url).api.contacts.byId,
       { vid },
       mergedProps
     );
@@ -29,7 +29,7 @@ const getByEmail = async (email, options) => {
     requiresAuthentication(_baseOptions);
     const mergedProps = { ...defaults, ..._baseOptions, ...options };
     const contact = await createRequest(
-      constants.api.contacts.byEmail,
+      constants(_baseOptions.url).api.contacts.byEmail,
       { email },
       mergedProps
     );
@@ -44,7 +44,7 @@ const getByUtk = async (utk, options) => {
     requiresAuthentication(_baseOptions);
     const mergedProps = { ...defaults, ..._baseOptions, ...options };
     const contact = await createRequest(
-      constants.api.contacts.byUtk,
+      constants(_baseOptions.url).api.contacts.byUtk,
       { utk },
       mergedProps
     );
@@ -73,7 +73,7 @@ const createOrUpdateContact = async obj => {
       }))
     };
     const response = await createRequest(
-      constants.api.contacts.createContact,
+      constants(_baseOptions.url).api.contacts.createContact,
       { method, body, email },
       _baseOptions
     );
@@ -101,7 +101,7 @@ const updateContactByVid = async (vid, properties) => {
     debug('updateContactByVid', JSON.stringify(body));
 
     await createRequest(
-      constants.api.contacts.byId,
+      constants(_baseOptions.url).api.contacts.byId,
       { method, body, vid },
       _baseOptions
     );
@@ -130,7 +130,7 @@ const batchUpdateContacts = async contactsToUpdate => {
       };
     });
     await createRequest(
-      constants.api.contacts.batchUpdateContacts,
+      constants(_baseOptions.url).api.contacts.batchUpdateContacts,
       { method, body },
       _baseOptions
     );
@@ -147,7 +147,7 @@ const deleteContact = async vid => {
     requiresAuthentication(_baseOptions);
     const method = 'DELETE';
     await createRequest(
-      constants.api.contacts.deleteById,
+      constants(_baseOptions.url).api.contacts.deleteById,
       { method, vid },
       _baseOptions
     );
@@ -164,7 +164,7 @@ const getContacts = async options => {
     requiresAuthentication(_baseOptions);
     const mergedProps = { ...defaults, ..._baseOptions, ...options };
     const allContacts = await createRequest(
-      constants.api.contacts.getAll,
+      constants(_baseOptions.url).api.contacts.getAll,
       {},
       mergedProps
     );
@@ -179,7 +179,7 @@ const getRecentlyModified = async options => {
     requiresAuthentication(_baseOptions);
     const mergedProps = { ..._baseOptions, ...options };
     const recentlyModifiedContacts = await createRequest(
-      constants.api.contacts.getRecentlyModified,
+      constants(_baseOptions.url).api.contacts.getRecentlyModified,
       {},
       mergedProps
     );
@@ -196,7 +196,7 @@ const search = async (q, options) => {
       q, ...defaults, ..._baseOptions, ...options
     };
     const searchResults = await createRequest(
-      constants.api.contacts.search,
+      constants(_baseOptions.url).api.contacts.search,
       {},
       mergedProps
     );

@@ -12,7 +12,7 @@ const singleSend = async (emailId, message, contactProperties, customProperties)
     const mergedProps = {...defaults, ..._baseOptions};
 
     const response = await createRequest(
-      constants.api.transactionalEmail.singleSend,
+      constants(_baseOptions.url).api.transactionalEmail.singleSend,
       {
         method,
         body: {

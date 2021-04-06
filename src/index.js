@@ -35,6 +35,7 @@ class HubSpotClient {
    * @param {object} props Constructor props. 1 of hapikey / accessToken is required for authenticated requests. No properties required for public methods (eg HubDB, forms)
    * @param {string} props.hapikey          - hapikey
    * @param {string} props.accessToken      - accessToken
+   * @param {string} props.url              - hubspot api url
    * @returns {object}
    */
   constructor(props) {

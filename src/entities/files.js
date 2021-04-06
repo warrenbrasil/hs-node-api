@@ -18,7 +18,7 @@ const getFilesInFolder = async (folder_id, opts = {}) => {
     });
 
     const files = await createRequest(
-      constants.api.files.getFilesInFolder,
+      constants(_baseOptions.url).api.files.getFilesInFolder,
       {},
       mergedProps
     );
@@ -42,7 +42,7 @@ const getFolders = async (parent_folder_id, opts = {}) => {
     });
 
     const folders = await createRequest(
-      constants.api.files.getFolders,
+      constants(_baseOptions.url).api.files.getFolders,
       {},
       mergedProps
     );

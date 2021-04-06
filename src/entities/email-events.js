@@ -15,7 +15,7 @@ const getCampaignsWithRecentActivity = async (opts = {}) => {
       limit
     });
     const recentCampaigns = await createRequest(
-      constants.api.emailEvents.campaignsWithRecentActivity,
+      constants(_baseOptions.url).api.emailEvents.campaignsWithRecentActivity,
       {},
       mergedProps
     );
@@ -30,7 +30,7 @@ const getCampaign = async (campaignId, appId) => {
     requiresAuthentication(_baseOptions);
     const mergedProps = Object.assign({}, defaults, _baseOptions, { appId });
     const campaignInfo = await createRequest(
-      constants.api.emailEvents.campaign,
+      constants(_baseOptions.url).api.emailEvents.campaign,
       {
         campaignId
       },

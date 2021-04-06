@@ -53,7 +53,7 @@ const getLayouts = async (opts = {}) => {
       additionalOpts
     );
     const layouts = await createRequest(
-      constants.api.layouts.getAll,
+      constants(_baseOptions.url).api.layouts.getAll,
       {},
       mergedProps
     );
@@ -71,7 +71,7 @@ const getLayout = async id => {
     }
     const mergedProps = Object.assign({}, defaults, _baseOptions);
     const layoutInfo = await createRequest(
-      constants.api.layouts.byId,
+      constants(_baseOptions.url).api.layouts.byId,
       { id },
       mergedProps
     );
@@ -89,7 +89,7 @@ const getLayoutBuffer = async id => {
     }
     const mergedProps = Object.assign({}, defaults, _baseOptions);
     const layoutBuffer = await createRequest(
-      constants.api.layouts.getBuffer,
+      constants(_baseOptions.url).api.layouts.getBuffer,
       { id },
       mergedProps
     );
@@ -107,7 +107,7 @@ const hasBufferedChanges = async id => {
     }
     const mergedProps = Object.assign({}, defaults, _baseOptions);
     const result = await createRequest(
-      constants.api.layouts.hasBufferedChanges,
+      constants(_baseOptions.url).api.layouts.hasBufferedChanges,
       { id },
       mergedProps
     );
@@ -125,7 +125,7 @@ const getPreviousLayoutVersions = async id => {
     }
     const mergedProps = Object.assign({}, defaults, _baseOptions);
     const previousVersions = await createRequest(
-      constants.api.layouts.getPreviousVersions,
+      constants(_baseOptions.url).api.layouts.getPreviousVersions,
       { id },
       mergedProps
     );
@@ -143,7 +143,7 @@ const getPreviousLayoutVersion = async ({ id, versionId }) => {
     }
     const mergedProps = Object.assign({}, defaults, _baseOptions);
     const previousVersions = await createRequest(
-      constants.api.layouts.getPreviousVersions,
+      constants(_baseOptions.url).api.layouts.getPreviousVersions,
       { id, versionId },
       mergedProps
     );

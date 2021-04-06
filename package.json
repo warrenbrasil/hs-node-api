@@ -1,12 +1,19 @@
 {
-  "name": "hubspot-api",
-  "version": "2.17.2-beta.2",
+  "name": "@warrenbrasil/hubspot-api",
+  "version": "2.17.2",
   "description": "HubSpot API Wrapper",
   "keywords": [
     "hubspot",
     "hubspot-api"
   ],
-  "repository": "github:HubSpotWebTeam/hs-node-api",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/warrenbrasil/hs-node-api.git"
+  },
+  "publishConfig": {
+    "access": "restricted",
+    "registry": "https://npm.pkg.github.com"
+  },
   "main": "dist/bundle.min.js",
   "types": "./types/main.d.ts",
   "scripts": {

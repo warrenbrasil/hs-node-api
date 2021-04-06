@@ -43,7 +43,7 @@ const getDomains = async (opts = {}) => {
       additionalOpts
     );
     const domains = await createRequest(
-      constants.api.domains.getAll,
+      constants(_baseOptions.url).api.domains.getAll,
       {},
       mergedProps
     );
@@ -61,7 +61,7 @@ const getDomain = async id => {
     }
     const mergedProps = Object.assign({}, defaults, _baseOptions);
     const domainInfo = await createRequest(
-      constants.api.domains.byId,
+      constants(_baseOptions.url).api.domains.byId,
       { id },
       mergedProps
     );

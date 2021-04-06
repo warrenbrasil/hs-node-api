@@ -23,7 +23,7 @@ const create = async properties => {
       }))
     };
     const response = await createRequest(
-      constants.api.company.create,
+      constants(_baseOptions.url).api.company.create,
       { method, body },
       _baseOptions
     );
@@ -49,7 +49,7 @@ const update = async (companyId, properties) => {
     };
 
     const response = await createRequest(
-      constants.api.company.byId,
+      constants(_baseOptions.url).api.company.byId,
       { method, body, companyId },
       _baseOptions
     );
@@ -77,7 +77,7 @@ const batchUpdate = async options => {
     });
 
     await createRequest(
-      constants.api.company.batchUpdate,
+      constants(_baseOptions.url).api.company.batchUpdate,
       { method, body },
       _baseOptions
     );
@@ -92,7 +92,7 @@ const deleteCompany = async companyId => {
     requiresAuthentication(_baseOptions);
     const method = 'DELETE';
     const response = await createRequest(
-      constants.api.company.byId,
+      constants(_baseOptions.url).api.company.byId,
       { method, companyId },
       _baseOptions
     );
@@ -117,7 +117,7 @@ const getAll = async props => {
     mergedProps = sanitizeObject(mergedProps);
 
     const companies = await createRequest(
-      constants.api.company.byId,
+      constants(_baseOptions.url).api.company.byId,
       { method, companyId: 'paged' },
       mergedProps
     );
@@ -139,7 +139,7 @@ const getRecentlyModified = async props => {
     });
     mergedProps = sanitizeObject(mergedProps);
     const companies = await createRequest(
-      constants.api.company.byId,
+      constants(_baseOptions.url).api.company.byId,
       { method, companyId: 'recent/modified' },
       mergedProps
     );
@@ -161,7 +161,7 @@ const getRecentlyCreated = async props => {
     });
     mergedProps = sanitizeObject(mergedProps);
     const companies = await createRequest(
-      constants.api.company.byId,
+      constants(_baseOptions.url).api.company.byId,
       { method, companyId: 'recent/created' },
       mergedProps
     );
@@ -178,7 +178,7 @@ const byId = async companyId => {
     let mergedProps = Object.assign({}, defaults, _baseOptions, {});
     mergedProps = sanitizeObject(mergedProps);
     const companies = await createRequest(
-      constants.api.company.byId,
+      constants(_baseOptions.url).api.company.byId,
       { method, companyId },
       mergedProps
     );
@@ -199,7 +199,7 @@ const getContacts = async (companyId, count = 100, vidOffset) => {
 
     mergedProps = sanitizeObject(mergedProps);
     const companies = await createRequest(
-      constants.api.company.contacts,
+      constants(_baseOptions.url).api.company.contacts,
       { method, companyId },
       mergedProps
     );
@@ -236,7 +236,7 @@ const byDomain = async (domain, props) => {
     mergedProps = sanitizeObject(mergedProps);
     // return Promise.resolve(JSON.stringify(body));
     const companies = await createRequest(
-      constants.api.company.byDomain,
+      constants(_baseOptions.url).api.company.byDomain,
       { method, domain, body },
       mergedProps
     );

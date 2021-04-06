@@ -4,7 +4,7 @@ import constants from '../constants';
 const getTokenInfo = async token => {
   try {
     const info = await createRequest(
-      constants.api.oauth.tokenInfo,
+      constants(_baseOptions.url).api.oauth.tokenInfo,
       { token }
     );
     return Promise.resolve(info);

@@ -13,7 +13,7 @@ const getAll = async (opts = {}) => {
     const mergedProps = Object.assign({}, defaults, _baseOptions, allowedProps);
 
     const allDeals = await createRequest(
-      constants.api.deals.getAll,
+      constants(_baseOptions.url).api.deals.getAll,
       {},
       mergedProps
     );
@@ -29,7 +29,7 @@ const getById = async (id, options = {}) => {
     requiresAuthentication(_baseOptions);
     const mergedProps = Object.assign({}, defaults, _baseOptions, options);
     const contact = await createRequest(
-      constants.api.deals.byId,
+      constants(_baseOptions.url).api.deals.byId,
       { id },
       mergedProps
     );
@@ -47,7 +47,7 @@ const getRecentlyCreated = async (opts = {}) => {
     const allowedProps = { count, offset, since, includePropertyVersions };
     const mergedProps = Object.assign({}, defaults, _baseOptions, allowedProps);
     const recentlyCreatedDeals = await createRequest(
-      constants.api.deals.recentlyCreated,
+      constants(_baseOptions.url).api.deals.recentlyCreated,
       {},
       mergedProps
     );
@@ -64,12 +64,12 @@ const createOrUpdate = async (opts = {}) => {
     const { id, properties, associations } = opts;
 
     let method = 'POST';
-    let url = constants.api.deals.create;
+    let url = constants(_baseOptions.url).api.deals.create;
     const body = { properties, associations };
     const options = { method, body };
     if (id) {
       method = 'PUT';
-      url = constants.api.deals.update;
+      url = constants(_baseOptions.url).api.deals.update;
       Object.assign(options, { method, id });
     }
     const deal = await createRequest(url, options, mergedProps);
@@ -84,7 +84,7 @@ const batchUpdate = async updates => {
     requiresAuthentication(_baseOptions);
     const mergedProps = Object.assign({}, defaults, _baseOptions);
     const method = 'POST';
-    const url = constants.api.deals.batchUpdate;
+    const url = constants(_baseOptions.url).api.deals.batchUpdate;
     await createRequest(url, { method, body: updates }, mergedProps);
     return Promise.resolve({ updated: true });
   } catch (e) {

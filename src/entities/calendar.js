@@ -38,7 +38,7 @@ const events = async ({
       Object.assign(mergedProps, { type });
     }
     const filteredEvents = await createRequest(
-      constants.api.calendar.events,
+      constants(_baseOptions.url).api.calendar.events,
       {},
       mergedProps
     );
@@ -53,7 +53,7 @@ const getTask = async taskId => {
     requiresAuthentication(_baseOptions);
     const mergedProps = Object.assign({}, defaults, _baseOptions);
     const task = await createRequest(
-      constants.api.calendar.taskById,
+      constants(_baseOptions.url).api.calendar.taskById,
       { taskId },
       mergedProps
     );
@@ -69,7 +69,7 @@ const deleteTask = async taskId => {
     const mergedProps = Object.assign({}, defaults, _baseOptions);
     const method = 'DELETE';
     await createRequest(
-      constants.api.calendar.taskById,
+      constants(_baseOptions.url).api.calendar.taskById,
       { method, taskId },
       mergedProps
     );
@@ -110,7 +110,7 @@ const updateTask = async (
     };
     body = sanitizeObject(body);
     const updatedTask = await createRequest(
-      constants.api.calendar.taskById,
+      constants(_baseOptions.url).api.calendar.taskById,
       { body, method, taskId },
       mergedProps
     );
@@ -163,7 +163,7 @@ const createTask = async ({
     body = sanitizeObject(body);
 
     const filteredEvents = await createRequest(
-      constants.api.calendar.createTask,
+      constants(_baseOptions.url).api.calendar.createTask,
       { body, method },
       mergedProps
     );

@@ -9,7 +9,7 @@ const getPublishingChannels = async () => {
     requiresAuthentication(_baseOptions);
     const mergedProps = Object.assign({}, defaults, _baseOptions);
     const publishingChannels = await createRequest(
-      constants.api.social.channels,
+      constants(_baseOptions.url).api.social.channels,
       {},
       mergedProps
     );
@@ -37,7 +37,7 @@ const createBroadcastMessage = async (opts = {}) => {
 
     const mergedProps = Object.assign({}, defaults, _baseOptions);
     await createRequest(
-      constants.api.social.createBroadcastMessage,
+      constants(_baseOptions.url).api.social.createBroadcastMessage,
       {
         method,
         body: requestBody

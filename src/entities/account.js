@@ -11,7 +11,7 @@ const getAccountDetails = async () => {
     requiresAuthentication(_baseOptions);
     const mergedProps = Object.assign({}, defaults, _baseOptions);
     const accountDetails = await createRequest(
-      constants.api.account.details,
+      constants(_baseOptions.url).api.account.details,
       {},
       mergedProps
     );
@@ -26,7 +26,7 @@ const getDailyLimit = async () => {
     requiresAuthentication(_baseOptions);
     const mergedProps = Object.assign({}, defaults, _baseOptions);
     const dailyLimit = await createRequest(
-      constants.api.account.dailyLimit,
+      constants(_baseOptions.url).api.account.dailyLimit,
       {},
       mergedProps
     );

@@ -29,7 +29,7 @@ const getAllBlogs = async (opts = {}) => {
       additionalOpts
     );
     const blogPosts = await createRequest(
-      constants.api.blog.getAll,
+      constants(_baseOptions.url).api.blog.getAll,
       {},
       mergedProps
     );
@@ -71,12 +71,12 @@ const createOrUpdateAuthor = async (opts = {}) => {
       googlePlus,
       avatar
     };
-    let url = constants.api.blog.authors;
+    let url = constants(_baseOptions.url).api.blog.authors;
     const options = { method, body };
 
     if (id) {
       method = 'PUT';
-      url = constants.api.blog.authorById;
+      url = constants(_baseOptions.url).api.blog.authorById;
       Object.assign(options, { method, id });
     }
 
@@ -116,7 +116,7 @@ const getAuthors = async (opts = {}) => {
       additionalOpts
     );
     const authors = await createRequest(
-      constants.api.blog.authors,
+      constants(_baseOptions.url).api.blog.authors,
       {},
       mergedProps
     );
@@ -131,7 +131,7 @@ const getAuthor = async id => {
     requiresAuthentication(_baseOptions);
     const mergedProps = Object.assign({}, defaults, _baseOptions);
     const author = await createRequest(
-      constants.api.blog.authorById,
+      constants(_baseOptions.url).api.blog.authorById,
       { id },
       mergedProps
     );
@@ -146,7 +146,7 @@ const deleteAuthor = async id => {
     requiresAuthentication(_baseOptions);
     const mergedProps = Object.assign({}, defaults, _baseOptions);
     await createRequest(
-      constants.api.blog.authorById,
+      constants(_baseOptions.url).api.blog.authorById,
       { id, method: 'DELETE' },
       mergedProps
     );
@@ -169,7 +169,7 @@ const searchAuthors = async (opts = {}) => {
       blog
     });
     const authors = await createRequest(
-      constants.api.blog.authorSearch,
+      constants(_baseOptions.url).api.blog.authorSearch,
       {},
       mergedProps
     );
@@ -193,7 +193,7 @@ const getComments = async (opts = {}) => {
       query
     });
     const comments = await createRequest(
-      constants.api.blog.comments,
+      constants(_baseOptions.url).api.blog.comments,
       {},
       mergedProps
     );
@@ -233,7 +233,7 @@ const createComment = async (opts = {}) => {
     };
     const mergedProps = Object.assign({}, defaults, _baseOptions);
     const comments = await createRequest(
-      constants.api.blog.comments,
+      constants(_baseOptions.url).api.blog.comments,
       { method, body },
       mergedProps
     );
@@ -267,7 +267,7 @@ const getTopics = async (opts = {}) => {
       additionalOpts
     );
     const topics = await createRequest(
-      constants.api.blog.topics,
+      constants(_baseOptions.url).api.blog.topics,
       {},
       mergedProps
     );
@@ -282,7 +282,7 @@ const getTopic = async id => {
     requiresAuthentication(_baseOptions);
     const mergedProps = Object.assign({}, defaults, _baseOptions);
     const topic = await createRequest(
-      constants.api.blog.topic,
+      constants(_baseOptions.url).api.blog.topic,
       { id },
       mergedProps
     );
@@ -329,7 +329,7 @@ const searchTopics = async (opts = {}) => {
       additionalOpts
     );
     const topics = await createRequest(
-      constants.api.blog.topicSearch,
+      constants(_baseOptions.url).api.blog.topicSearch,
       {},
       mergedProps
     );
@@ -351,11 +351,11 @@ const createOrUpdateTopic = async (opts = {}) => {
     };
 
     let method = 'POST';
-    let url = constants.api.blog.topics;
+    let url = constants(_baseOptions.url).api.blog.topics;
     const options = { method, body };
     if (id) {
       method = 'PUT';
-      url = constants.api.blog.topic;
+      url = constants(_baseOptions.url).api.blog.topic;
       Object.assign(options, { method, id });
     }
 
@@ -371,7 +371,7 @@ const getComment = async id => {
     requiresAuthentication(_baseOptions);
     const mergedProps = Object.assign({}, defaults, _baseOptions);
     const comment = await createRequest(
-      constants.api.blog.commentById,
+      constants(_baseOptions.url).api.blog.commentById,
       { id },
       mergedProps
     );
@@ -386,7 +386,7 @@ const deleteComment = async id => {
     requiresAuthentication(_baseOptions);
     const mergedProps = Object.assign({}, defaults, _baseOptions);
     await createRequest(
-      constants.api.blog.commentById,
+      constants(_baseOptions.url).api.blog.commentById,
       { id, method: 'DELETE' },
       mergedProps
     );
@@ -401,7 +401,7 @@ const restoreDeletedComment = async id => {
     requiresAuthentication(_baseOptions);
     const mergedProps = Object.assign({}, defaults, _baseOptions);
     await createRequest(
-      constants.api.blog.restoreDeletedComment,
+      constants(_baseOptions.url).api.blog.restoreDeletedComment,
       { id, method: 'POST' },
       mergedProps
     );
@@ -416,7 +416,7 @@ const getBlogById = async id => {
     requiresAuthentication(_baseOptions);
     const mergedProps = Object.assign({}, defaults, _baseOptions);
     const blogInfo = await createRequest(
-      constants.api.blog.byId,
+      constants(_baseOptions.url).api.blog.byId,
       { id },
       mergedProps
     );
@@ -476,7 +476,7 @@ const getPosts = async (opts = {}) => {
       additionalOpts
     );
     const blogPosts = await createRequest(
-      constants.api.blog.posts,
+      constants(_baseOptions.url).api.blog.posts,
       {},
       mergedProps
     );
@@ -491,7 +491,7 @@ const getPostById = async id => {
     requiresAuthentication(_baseOptions);
     const mergedProps = Object.assign({}, defaults, _baseOptions);
     const blogPosts = await createRequest(
-      constants.api.blog.postById,
+      constants(_baseOptions.url).api.blog.postById,
       { id },
       mergedProps
     );
@@ -506,7 +506,7 @@ const deletePost = async id => {
     requiresAuthentication(_baseOptions);
     const mergedProps = Object.assign({}, defaults, _baseOptions);
     await createRequest(
-      constants.api.blog.postById,
+      constants(_baseOptions.url).api.blog.postById,
       { id, method: 'DELETE' },
       mergedProps
     );
@@ -524,7 +524,7 @@ const clonePost = async (opts = {}) => {
     const body = { name };
     const method = 'POST';
     await createRequest(
-      constants.api.blog.clonePostById,
+      constants(_baseOptions.url).api.blog.clonePostById,
       { id, body, method },
       mergedProps
     );
@@ -545,7 +545,7 @@ const publishOrSchedulePost = async (id, action) => {
     const body = { action };
     const method = 'POST';
     await createRequest(
-      constants.api.blog.publishOrSchedulePost,
+      constants(_baseOptions.url).api.blog.publishOrSchedulePost,
       { id, body, method },
       mergedProps
     );
@@ -560,7 +560,7 @@ const deleteTopic = async id => {
     requiresAuthentication(_baseOptions);
     const mergedProps = Object.assign({}, defaults, _baseOptions);
     await createRequest(
-      constants.api.blog.topic,
+      constants(_baseOptions.url).api.blog.topic,
       { id, method: 'DELETE' },
       mergedProps
     );
@@ -575,7 +575,7 @@ const getPostAutosaveBuffer = async id => {
     requiresAuthentication(_baseOptions);
     const mergedProps = Object.assign({}, defaults, _baseOptions);
     const buffer = await createRequest(
-      constants.api.blog.postAutoSaveBuffer,
+      constants(_baseOptions.url).api.blog.postAutoSaveBuffer,
       { id },
       mergedProps
     );
@@ -590,7 +590,7 @@ const getPostAutosaveBufferStatus = async id => {
     requiresAuthentication(_baseOptions);
     const mergedProps = Object.assign({}, defaults, _baseOptions);
     const bufferStatus = await createRequest(
-      constants.api.blog.postAutoSaveBufferStatus,
+      constants(_baseOptions.url).api.blog.postAutoSaveBufferStatus,
       { id },
       mergedProps
     );
@@ -605,7 +605,7 @@ const getPostVersions = async id => {
     requiresAuthentication(_baseOptions);
     const mergedProps = Object.assign({}, defaults, _baseOptions);
     const versions = await createRequest(
-      constants.api.blog.postVersions,
+      constants(_baseOptions.url).api.blog.postVersions,
       { id },
       mergedProps
     );
@@ -620,7 +620,7 @@ const getPostVersionById = async (id, version_id) => {
     requiresAuthentication(_baseOptions);
     const mergedProps = Object.assign({}, defaults, _baseOptions);
     const version = await createRequest(
-      constants.api.blog.postVersions,
+      constants(_baseOptions.url).api.blog.postVersions,
       { id, version_id },
       mergedProps
     );
@@ -637,7 +637,7 @@ const restorePostVersionById = async (id, version_id) => {
     const body = { version_id };
     const method = 'POST';
     const version = await createRequest(
-      constants.api.blog.postVersions,
+      constants(_baseOptions.url).api.blog.postVersions,
       { id, body, method },
       mergedProps
     );
@@ -652,7 +652,7 @@ const validatePostAutosaveBufferStatus = async id => {
     requiresAuthentication(_baseOptions);
     const mergedProps = Object.assign({}, defaults, _baseOptions);
     const bufferStatus = await createRequest(
-      constants.api.blog.validatePostAutoSaveBuffer,
+      constants(_baseOptions.url).api.blog.validatePostAutoSaveBuffer,
       { id, method: 'POST' },
       mergedProps
     );
@@ -667,7 +667,7 @@ const restoredDeletedPost = async id => {
     requiresAuthentication(_baseOptions);
     const mergedProps = Object.assign({}, defaults, _baseOptions);
     const postStatus = await createRequest(
-      constants.api.blog.restorePostById,
+      constants(_baseOptions.url).api.blog.restorePostById,
       { id, method: 'POST' },
       mergedProps
     );
@@ -682,7 +682,7 @@ const pushPostAutosaveBufferLive = async id => {
     requiresAuthentication(_baseOptions);
     const mergedProps = Object.assign({}, defaults, _baseOptions);
     const bufferStatus = await createRequest(
-      constants.api.blog.pushPostAutosaveBufferToLive,
+      constants(_baseOptions.url).api.blog.pushPostAutosaveBufferToLive,
       { id, method: 'POST' },
       mergedProps
     );
@@ -742,7 +742,7 @@ const updateAutosaveBuffer = async (opts = {}) => {
     };
     const method = 'PUT';
     const buffer = await createRequest(
-      constants.api.blog.postAutoSaveBuffer,
+      constants(_baseOptions.url).api.blog.postAutoSaveBuffer,
       { id, method, body },
       mergedProps
     );
@@ -804,11 +804,11 @@ const createOrUpdatePost = async (opts = {}) => {
     };
 
     let method = 'POST';
-    let url = constants.api.blog.posts;
+    let url = constants(_baseOptions.url).api.blog.posts;
     const options = { method, body };
     if (id) {
       method = 'PUT';
-      url = constants.api.blog.postById;
+      url = constants(_baseOptions.url).api.blog.postById;
       Object.assign(options, { method, id });
     }
 
@@ -832,7 +832,7 @@ const groupTopics = async (opts = {}) => {
 
     const method = 'POST';
     const update = await createRequest(
-      constants.api.blog.groupTopics,
+      constants(_baseOptions.url).api.blog.groupTopics,
       { method, body },
       mergedProps
     );

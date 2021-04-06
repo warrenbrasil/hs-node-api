@@ -11,7 +11,7 @@ const create = async (opts = {}) => {
     const { engagement, associations, metadata } = opts;
 
     const method = 'POST';
-    const url = constants.api.engagements.create;
+    const url = constants(_baseOptions.url).api.engagements.create;
     const body = { engagement, associations, metadata };
     const options = { method, body };
     const result = await createRequest(url, options, mergedProps);

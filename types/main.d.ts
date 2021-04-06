@@ -26,6 +26,7 @@ declare class HubSpotClient {
 declare namespace HubSpotClient {
   export interface IHubSpotClientProps {
     hapikey?: string;
+    url?: string;
     accessToken?: string;
   }
 }

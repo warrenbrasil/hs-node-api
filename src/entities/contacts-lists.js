@@ -14,7 +14,7 @@ const getById = async listId => {
     requiresAuthentication(_baseOptions);
     const mergedProps = Object.assign({}, _baseOptions);
     const list = await createRequest(
-      constants.api.contactsList.byId,
+      constants(_baseOptions.url).api.contactsList.byId,
       { listId },
       mergedProps
     );
@@ -29,7 +29,7 @@ const getContactsInList = async (listId, opts = {}) => {
     requiresAuthentication(_baseOptions);
     const mergedProps = { ..._baseOptions, ...defaults, ...opts };
     const contacts = await createRequest(
-      constants.api.contactsList.contactsByListId,
+      constants(_baseOptions.url).api.contactsList.contactsByListId,
       { listId },
       mergedProps
     );
@@ -45,7 +45,7 @@ const addContactsToList = async (listId, contacts = {}) => {
     const method = 'POST';
     const body = contacts;
     const response = await createRequest(
-        constants.api.contactsList.addContactsToList,
+        constants(_baseOptions.url).api.contactsList.addContactsToList,
         { method, listId, body },
         _baseOptions
     );

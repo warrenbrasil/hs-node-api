@@ -32,12 +32,12 @@ const createOrUpdateUrlMapping = async (opts = {}) => {
     };
 
     let method = 'POST';
-    let url = constants.api.urlMappings.create;
+    let url = constants(_baseOptions.url).api.urlMappings.create;
 
     const options = { method, body };
     if (id) {
       method = 'PUT';
-      url = constants.api.urlMappings.byId;
+      url = constants(_baseOptions.url).api.urlMappings.byId;
       Object.assign(options, { method, id });
     }
 
@@ -75,7 +75,7 @@ const getUrlMappings = async (opts = {}) => {
       additionalOpts
     );
     const urlMappings = await createRequest(
-      constants.api.urlMappings.getAll,
+      constants(_baseOptions.url).api.urlMappings.getAll,
       {},
       mergedProps
     );
@@ -94,7 +94,7 @@ const getUrlMappingById = async id => {
     }
     const mergedProps = Object.assign({}, defaults, _baseOptions);
     const urlMapping = await createRequest(
-      constants.api.urlMappings.byId,
+      constants(_baseOptions.url).api.urlMappings.byId,
       { id },
       mergedProps
     );
@@ -109,7 +109,7 @@ const deleteUrlMapping = async id => {
     requiresAuthentication(_baseOptions);
     const mergedProps = Object.assign({}, defaults, _baseOptions);
     await createRequest(
-      constants.api.pages.byId,
+      constants(_baseOptions.url).api.pages.byId,
       { url_mapping_id, method: 'DELETE' },
       mergedProps
     );

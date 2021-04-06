@@ -68,7 +68,7 @@ const createWorkflow = async (opts = {}) => {
     const method = 'POST';
 
     const workflowInfo = await createRequest(
-      constants.api.workflows.create,
+      constants(_baseOptions.url).api.workflows.create,
       {
         method,
         body
@@ -89,7 +89,7 @@ const getWorkflow = async id => {
       throw new Error('getWorkflow requires an `id` argument');
     }
     const workflowInfo = await createRequest(
-      constants.api.workflows.byId,
+      constants(_baseOptions.url).api.workflows.byId,
       {
         id
       },
@@ -109,7 +109,7 @@ const deleteWorkflow = async id => {
       throw new Error('deleteWorkflow requires an `id` argument');
     }
     await createRequest(
-      constants.api.workflows.byId,
+      constants(_baseOptions.url).api.workflows.byId,
       {
         method: 'DELETE',
         id
@@ -136,7 +136,7 @@ const updateWorkflow = async (opts = {}) => {
     }
 
     const workflowInfo = await createRequest(
-      constants.api.workflows.byId,
+      constants(_baseOptions.url).api.workflows.byId,
       {
         method,
         body,
@@ -155,7 +155,7 @@ const getAll = async () => {
     requiresAuthentication(_baseOptions);
     const mergedProps = Object.assign({}, defaults, _baseOptions);
     const allWorkflows = await createRequest(
-      constants.api.workflows.getAll,
+      constants(_baseOptions.url).api.workflows.getAll,
       {},
       mergedProps
     );
@@ -172,7 +172,7 @@ const enrollContact = async (opts = {}) => {
     const method = 'POST';
     const mergedProps = Object.assign({}, defaults, _baseOptions);
     await createRequest(
-      constants.api.workflows.enrollContact,
+      constants(_baseOptions.url).api.workflows.enrollContact,
       {
         method,
         workflowId,
@@ -193,7 +193,7 @@ const unenrollContact = async (opts = {}) => {
     const method = 'DELETE';
     const mergedProps = Object.assign({}, defaults, _baseOptions);
     await createRequest(
-      constants.api.workflows.enrollContact,
+      constants(_baseOptions.url).api.workflows.enrollContact,
       {
         method,
         workflowId,
@@ -212,7 +212,7 @@ const getEnrollments = async id => {
     requiresAuthentication(_baseOptions);
     const mergedProps = Object.assign({}, defaults, _baseOptions);
     const enrollments = await createRequest(
-      constants.api.workflows.enrollments,
+      constants(_baseOptions.url).api.workflows.enrollments,
       {
         id
       },
@@ -235,7 +235,7 @@ const getWorkflowEventLog = async (opts = {}) => {
     const method = 'PUT';
     const mergedProps = Object.assign({}, defaults, _baseOptions);
     const eventLogs = await createRequest(
-      constants.api.workflows.eventLogs,
+      constants(_baseOptions.url).api.workflows.eventLogs,
       {
         method,
         body,

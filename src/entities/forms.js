@@ -11,7 +11,7 @@ const submitFormV3 = async (portalId, formId, opts = {}) => {
   try {
     const method = 'POST';
     const response = await createRequest(
-      constants.api.forms.submitFormV3,
+      constants(_baseOptions.url).api.forms.submitFormV3,
       {
         formId,
         portalId,
@@ -57,7 +57,7 @@ const submitForm = async (portalId, formId, opts = {}) => {
     }
 
     await createRequest(
-      constants.api.forms.submitForm,
+      constants(_baseOptions.url).api.forms.submitForm,
       {
         formId,
         portalId,
@@ -77,7 +77,7 @@ const getFormFields = async formId => {
     requiresAuthentication(_baseOptions);
     const mergedProps = Object.assign({}, defaults, _baseOptions);
     const formFields = await createRequest(
-      constants.api.forms.formFields,
+      constants(_baseOptions.url).api.forms.formFields,
       { formId },
       mergedProps
     );
@@ -92,7 +92,7 @@ const getSubmissions = async (formId, opts = {}) => {
     requiresAuthentication(_baseOptions);
     const mergedProps = Object.assign({}, defaults, _baseOptions, opts);
     const submissions = await createRequest(
-      constants.api.forms.submissions,
+      constants(_baseOptions.url).api.forms.submissions,
       { formId },
       mergedProps
     );
@@ -107,7 +107,7 @@ const getForm = async (formId, opts = {}) => {
     requiresAuthentication(_baseOptions);
     const mergedProps = Object.assign({}, defaults, _baseOptions, opts);
     const form = await createRequest(
-      constants.api.forms.getForm,
+      constants(_baseOptions.url).api.forms.getForm,
       { formId },
       mergedProps,
     );

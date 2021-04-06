@@ -56,11 +56,11 @@ const createOrUpdatePage = async (opts = {}) => {
     };
 
     let method = 'POST';
-    let url = constants.api.pages.create;
+    let url = constants(_baseOptions.url).api.pages.create;
     const options = { method, body };
     if (id) {
       method = 'PUT';
-      url = constants.api.pages.byId;
+      url = constants(_baseOptions.url).api.pages.byId;
       Object.assign(options, { method, id });
     }
 
@@ -133,7 +133,7 @@ const getPages = async (opts = {}) => {
     );
 
     const pages = await createRequest(
-      constants.api.pages.list,
+      constants(_baseOptions.url).api.pages.list,
       {},
       mergedProps
     );
@@ -148,7 +148,7 @@ const deletePage = async id => {
     requiresAuthentication(_baseOptions);
     const mergedProps = Object.assign({}, defaults, _baseOptions);
     await createRequest(
-      constants.api.pages.byId,
+      constants(_baseOptions.url).api.pages.byId,
       { id, method: 'DELETE' },
       mergedProps
     );
@@ -163,7 +163,7 @@ const getPageById = async id => {
     requiresAuthentication(_baseOptions);
     const mergedProps = Object.assign({}, defaults, _baseOptions);
     const page = await createRequest(
-      constants.api.pages.byId,
+      constants(_baseOptions.url).api.pages.byId,
       { id },
       mergedProps
     );
@@ -222,7 +222,7 @@ const updateAutosaveBuffer = async (opts = {}) => {
     };
     const method = 'PUT';
     const buffer = await createRequest(
-      constants.api.pages.buffer,
+      constants(_baseOptions.url).api.pages.buffer,
       { id, method, body },
       mergedProps
     );
@@ -237,7 +237,7 @@ const getPageAutosaveBuffer = async id => {
     requiresAuthentication(_baseOptions);
     const mergedProps = Object.assign({}, defaults, _baseOptions);
     const buffer = await createRequest(
-      constants.api.pages.buffer,
+      constants(_baseOptions.url).api.pages.buffer,
       { id },
       mergedProps
     );
@@ -252,7 +252,7 @@ const clonePage = async id => {
     requiresAuthentication(_baseOptions);
     const mergedProps = Object.assign({}, defaults, _baseOptions);
     const method = 'POST';
-    await createRequest(constants.api.pages.clone, { id, method }, mergedProps);
+    await createRequest(constants(_baseOptions.url).api.pages.clone, { id, method }, mergedProps);
     return Promise.resolve({ cloned: true });
   } catch (e) {
     return Promise.reject(e.message);
@@ -264,7 +264,7 @@ const hasBufferedChanges = async id => {
     requiresAuthentication(_baseOptions);
     const mergedProps = Object.assign({}, defaults, _baseOptions);
     const bufferedChanges = await createRequest(
-      constants.api.pages.bufferedChanges,
+      constants(_baseOptions.url).api.pages.bufferedChanges,
       { id },
       mergedProps
     );
@@ -282,7 +282,7 @@ const doPublishAction = async (id, action) => {
     const method = 'POST';
 
     await createRequest(
-      constants.api.pages.publishAction,
+      constants(_baseOptions.url).api.pages.publishAction,
       { id, method, body },
       mergedProps
     );
@@ -297,7 +297,7 @@ const pushBufferLive = async id => {
     requiresAuthentication(_baseOptions);
     const mergedProps = Object.assign({}, defaults, _baseOptions);
     await createRequest(
-      constants.api.pages.pushBufferLive,
+      constants(_baseOptions.url).api.pages.pushBufferLive,
       { id, method: 'POST' },
       mergedProps
     );
@@ -312,7 +312,7 @@ const restoreDeleted = async id => {
     requiresAuthentication(_baseOptions);
     const mergedProps = Object.assign({}, defaults, _baseOptions);
     await createRequest(
-      constants.api.pages.restoreDeleted,
+      constants(_baseOptions.url).api.pages.restoreDeleted,
       { id, method: 'POST' },
       mergedProps
     );
@@ -327,7 +327,7 @@ const validatePageAutoSaveBuffer = async id => {
     requiresAuthentication(_baseOptions);
     const mergedProps = Object.assign({}, defaults, _baseOptions);
     await createRequest(
-      constants.api.pages.validateBuffer,
+      constants(_baseOptions.url).api.pages.validateBuffer,
       { id, method: 'POST' },
       mergedProps
     );
@@ -342,7 +342,7 @@ const getPageVersions = async id => {
     requiresAuthentication(_baseOptions);
     const mergedProps = Object.assign({}, defaults, _baseOptions);
     const versions = await createRequest(
-      constants.api.pages.versions,
+      constants(_baseOptions.url).api.pages.versions,
       { id },
       mergedProps
     );
@@ -360,7 +360,7 @@ const restorePageVersion = async (id, version_id) => {
     const method = 'POST';
 
     const versions = await createRequest(
-      constants.api.pages.restoreVersion,
+      constants(_baseOptions.url).api.pages.restoreVersion,
       { id, body, method },
       mergedProps
     );
