@@ -178,6 +178,8 @@ const getConstants = (host) => {
       }
     }
   };
+
+  return consts;
 }
 
 export default getConstants
