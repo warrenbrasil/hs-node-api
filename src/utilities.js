@@ -63,7 +63,7 @@ export default async function createRequest(uri, options, props = {}) {
     const method = options.method || 'GET';
     debugApp(`${method}: ${url}`);
     const headers = {};
-    const timeout = 30000;
+    const timeout = 60000;
     const data = options.body || {};
     if (props.accessToken) {
       headers.Authorization = `Bearer ${props.accessToken}`;
@@ -73,6 +73,7 @@ export default async function createRequest(uri, options, props = {}) {
       response => response.data
     );
   } catch (e) {
+    debugApp(`Error at createRequest. Error: ${JSON.stringify(e)}`)
     return Promise.reject(e);
   }
 }
